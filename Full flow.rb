@@ -12,20 +12,18 @@ driver.get 'http://demo.redmine.org'
 
 
 driver.find_element(class: 'register').click #register new user
-driver.find_element(id: 'user_login').send_keys 'testuser2'
+driver.find_element(id: 'user_login').send_keys 'testuser8'
 driver.find_element(id: 'user_password').send_keys 'qwerty'
 driver.find_element(id: 'user_password_confirmation').send_keys 'qwerty'
 driver.find_element(id: 'user_firstname').send_keys 'Firstname'
 driver.find_element(id: 'user_lastname').send_keys 'Lastname'
-driver.find_element(id: 'user_mail').send_keys 'vlmiruby+2@gmail.com'
+driver.find_element(id: 'user_mail').send_keys 'vlmiruby+8@gmail.com'
 driver.find_element(name: 'commit').click
 
-fail 'Expected message did not meet' unless driver.find_element(id: 'flash_notice').text == 'Your account has been activated. You can now log in.asdf'
-
-driver.find_element(name: 'logout').click #logout
+driver.find_element(class: 'logout').click #logout
 
 driver.find_element(class: 'login').click #login
-driver.find_element(id: 'username').send_keys 'testuser2'
+driver.find_element(id: 'username').send_keys 'testuser8'
 driver.find_element(id: 'password').send_keys 'qwerty'
 driver.find_element(name: 'login').click
 
@@ -41,16 +39,16 @@ driver.find_element(link: 'Новый проект').click
 driver.find_element(id: 'project_name').send_keys 'TestProject2'
 driver.find_element(name: 'commit').click
 
-driver.find_element(class: 'projects').click #add user (doesnt work)
+driver.find_element(class: 'projects').click #add user
 driver.find_element(id: 'tab-members').click
-driver.find_element(id: 'principal_search').send_keys 'testuser2'
+driver.find_element(id: 'principal_search').send_keys 'testuser8'
 driver.find_element(name: 'membership[user_ids][]').click
-driver.find_element(xpath: '(//input[@name='membership[role_ids][]'])[7]').click
+driver.find_element(:xpath, "(//input[@name='membership[role_ids][]'])[7]").click
 driver.find_element(id: 'member-add-submit').click
 
-driver.find_element(css: '#member-90327 > td.buttons > a.icon.icon-edit').click #change users role (doesnt work)
-driver.find_element(xpath: '(//input[@name='membership[role_ids][]'])[6]').click
-driver.find_element(xpath: '(//input[@name='commit'])[4]').click
+driver.find_element(:css, "#member-90327 > td.buttons > a.icon.icon-edit").click #change users role
+driver.find_element(:xpath, "(//input[@name='membership[role_ids][]'])[6]").click
+driver.find_element(:xpath, "(//input[@name='commit'])[4]").click
 
 driver.find_element(id: 'tab-versions').click #add version
 driver.find_element(link: 'Новая версия').click
@@ -62,16 +60,16 @@ driver.find_element(id: 'issue_subject').send_keys 'bug1'
 driver.find_element(name: 'commit').click
 
 driver.find_element(link: 'Новая задача').click #create feature
-driver.find_element(id: 'issue_tracker_id').click label=Feature
+driver.find_element(:id, "issue_tracker_id").select_by(:text, "Feature")
 driver.find_element(id: 'issue_subject').send_keys 'feature1'
 driver.find_element(name: 'commit').click
 
 driver.find_element(link: 'Новая задача').click #create support
-driver.find_element(id: 'issue_tracker_id').click label=support
+driver.find_element(:id, "issue_tracker_id").select_by(:text, "Support")
 driver.find_element(id: 'issue_subject').send_keys 'support1'
 driver.find_element(name: 'commit').click
 
-driver.find_element(link: 'Задачи').click #check visibility
+driver.find_element(link: 'Задачи').click #check visibility (doesnt work)
 driver.find_element(name: 'commit').checkifpresent
 driver.find_element(name: 'commit').click
 driver.find_element(name: 'commit').click
