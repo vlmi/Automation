@@ -3,13 +3,13 @@ require 'selenium-webdriver'
 driver = Selenium::WebDriver.for :firefox
 driver.get 'http://demo.redmine.org'
 
-user_login1 = 'testuser31'
-user_login2 = 'testuser32'
-email1 = 'vlmiruby+31@gmail.com'
-email2 = 'vlmiruby+32@gmail.com'
+user_login1 = 'testuser44'
+user_login2 = 'testuser45'
+email1 = 'vlmiruby+44@gmail.com'
+email2 = 'vlmiruby+45@gmail.com'
 pass1 = 'qwerty'
 pass2 = 'qwerty1'
-project = 'TestProject31'
+project = 'TestProject44'
 
 driver.find_element(class: 'register').click #register new user1
 driver.find_element(id: 'user_login').send_keys user_login1
