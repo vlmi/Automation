@@ -61,7 +61,9 @@ def create_new_project(project)
 end
 def add_user(user, role)
   @driver.find_element(id: 'tab-members').click
-  @driver.find_element(id: 'principal_search').send_keys user
+  @driver.find_element(:xpath, "//div[@id='tab-content-members']/p/a").click
+  sleep 2
+  @driver.find_element(:xpath, ".//*[@id='principal_search']").send_keys user
   sleep 2
   @driver.find_element(name: 'membership[user_ids][]').click
   @driver.find_element(:xpath, "#{role}").click
@@ -76,7 +78,7 @@ def change_role(role)
 end
 def add_version(version)
   @driver.find_element(id: 'tab-versions').click
-  @driver.find_element(:css, '.icon-add').click
+  @driver.find_element(:xpath, "//*[@id='tab-content-versions']/p[2]/a").click
   @driver.find_element(id: 'version_name').send_keys version
   @driver.find_element(name: 'commit').click
 end
