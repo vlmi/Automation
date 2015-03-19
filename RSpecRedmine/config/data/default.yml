@@ -1,0 +1,7 @@
+register_page:
+                     login: TestUser
+                     password: qwerty
+                     password_confirm: qwerty
+                     first_name: ~first_name
+                     last_name: ~last_name
+                     email: ~email_address
