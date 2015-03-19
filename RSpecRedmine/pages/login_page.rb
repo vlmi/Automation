@@ -1,5 +1,6 @@
 class LoginPage
   include PageObject
+
   page_url 'http://demo.redmine.org/login'
   text_field(:login, :id => 'username')
   text_field(:pass, :id => 'password')

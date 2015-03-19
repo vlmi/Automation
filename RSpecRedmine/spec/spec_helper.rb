@@ -3,6 +3,7 @@ require 'page-object'
 require 'watir-webdriver'
 
 RSpec.configure do |config|
+  # config.include
   config.include PageObject::PageFactory
   config.before :all do
     @browser = Watir::Browser.new :firefox
